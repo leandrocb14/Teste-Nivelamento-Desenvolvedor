@@ -1,0 +1,95 @@
+# Visual Studio-specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build artifacts
+bin/
+obj/
+out/
+debug/
+release/
+TestResults/
+
+# Rider-specific files
+.idea/
+
+# macOS-specific files
+.DS_Store
+
+# Windows-specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Packages
+packages/
+!packages/repositories.config
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+project.lock.json
+project.assets.json
+packages.lock.json
+# Avoid versioning compiled DLLs
+**/packages/*/lib/*.dll
+
+# Entity Framework migrations
+migrations/
+
+# ASP.NET stuff
+appsettings.json
+appsettings.*.json
+App_Data/
+App_Code/
+App_WebReferences/
+App.config
+Web.config
+Web.Debug.config
+Web.Release.config
+
+# Logs
+*.log
+logs/
+
+# User secrets (for ASP.NET Core)
+secrets.json
+
+# Resharper files
+*.DotSettings.user
+_ReSharper.Caches/
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Python virtual environments (caso use Python junto com C#)
+venv/
+ENV/
+__pycache__/
+
+# SonarQube
+.sonar/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.swn
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+*.codecov
+
+# Test explorer files
+TestResults/
+ncrunchproject.xml
+ncrunchsolution.xml
