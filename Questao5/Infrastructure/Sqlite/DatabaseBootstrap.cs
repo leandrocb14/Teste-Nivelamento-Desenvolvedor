@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System.Data;
+using Dapper;
 using Microsoft.Data.Sqlite;
 
 namespace Questao5.Infrastructure.Sqlite
@@ -12,9 +13,14 @@ namespace Questao5.Infrastructure.Sqlite
             this.databaseConfig = databaseConfig;
         }
 
+        public IDbConnection GetConnection()
+        {
+            return new SqliteConnection(databaseConfig.Name);
+        }
+
         public void Setup()
         {
-            using var connection = new SqliteConnection(databaseConfig.Name);
+            using var connection = GetConnection();
 
             var table = connection.Query<string>("SELECT name FROM sqlite_master WHERE type='table' AND (name = 'contacorrente' or name = 'movimento' or name = 'idempotencia');");
             var tableName = table.FirstOrDefault();
