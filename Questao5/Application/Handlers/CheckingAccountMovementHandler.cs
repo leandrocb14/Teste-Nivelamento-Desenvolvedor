@@ -25,6 +25,7 @@ namespace Questao5.Application.Handlers
 
         public async Task<CheckingAccountMovementResponse> Handle(CheckingAccountMovementRequest request, CancellationToken cancellationToken)
         {
+            _dbConnection.Open();
             using var transaction = _dbConnection.BeginTransaction();
 
             try
@@ -47,7 +48,7 @@ namespace Questao5.Application.Handlers
                 if (!checkingAccount.Active)
                     ApplicationErrorGenerator.Throw(ApplicationErrorGenerator.INACTIVE_ACCOUNT);
 
-                var movement = new Domain.Entities.Movement(Guid.NewGuid().ToString(), DateTime.UtcNow, request.TransactionType, request.Value, checkingAccount);
+                var movement = new Domain.Entities.Movement(Guid.NewGuid().ToString(), DateTime.UtcNow, request.TransactionType, Math.Round(request.Value, 2), checkingAccount);
                 var createdMovement = await _movementrepository.Create(movement);
 
                 var result = new CheckingAccountMovementResponse(createdMovement.MovementId);
